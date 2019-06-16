@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  mobile_no: 1
+  profile: MyString
+  is_verified: false
+  is_deleted: false
+  is_suspended: false
+  secrete_token: MyString
+  address: one
+
+two:
+  name: MyString
+  mobile_no: 1
+  profile: MyString
+  is_verified: false
+  is_deleted: false
+  is_suspended: false
+  secrete_token: MyString
+  address: two
