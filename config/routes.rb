@@ -14,6 +14,9 @@ Rails.application.routes.draw do
         end
       end
       resources :products, only: [:index, :show, :update, :create, :destroy] do
+        collection do
+          get :user_products
+        end
       end
     end
   end
