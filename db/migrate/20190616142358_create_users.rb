@@ -16,6 +16,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     add_index :users, :is_verified
     add_index :users, :is_deleted
     add_index :users, :is_suspended
-    add_index :users, :secrete_token
+    add_index :users, :secrete_token, unique: true
   end
 end

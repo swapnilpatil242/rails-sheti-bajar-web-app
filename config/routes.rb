@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
       resources :users, only: [:show, :update, :create] do
         collection do
-          post :authenticate
+          get :authenticate
         end
       end
       resources :products, only: [:index, :show, :update, :create, :destroy] do
