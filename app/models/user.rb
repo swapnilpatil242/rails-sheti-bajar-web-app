@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   def generate_token
     loop do
-      token = SecureRandom.hex(14)
+      token = SecureRandom.hex(20)
       break token unless User.where(secrete_token: token).exists?
     end
   end
