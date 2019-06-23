@@ -5,9 +5,23 @@ class  Api::V1::ProductsController < ApplicationController
   before_action :product, only: [:show, :destroy, :update]
 
   def index
-    address = Address.where(city: params[:city], taluka: params[:taluka], district: params[:district]).first
-    products = address.products.where(is_deleted: false) if address.present?
-    render json: {status: "success", code: 200, data: products } and return
+
+    if params[:city] == "allCities"
+      addresses = Address.where(taluka: params[:taluka], district: params[:district]).pluck(:id)   
+      products = Product.where(address_id: addresses, is_deleted: false)
+    elsif params[:taluka] == "allTaluka"
+      addresses = Address.where(district: params[:district]).pluck(:id)   
+      products = Product.where(address_id: addresses, is_deleted: false)
+    else
+      address = Address.where(city: params[:city], taluka: params[:taluka], district: params[:district]).first
+      products = address.products.where(is_deleted: false) if address.present?
+    end
+
+    if products.present?
+      render json: {status: "success", code: 200, data: products } and return
+    else
+      render json: {status: "success", code: 200, message: "data not found" } and return    
+    end
   end
   
   def create
