@@ -2,6 +2,7 @@ class Api::V1::UsersController < ApplicationController
   # before_action :validate_params
   # skip_before_action :verify_authenticity_token, if: :json_request?
   skip_before_action :verify_authenticity_token
+  skip_before_action :user_authenticate, :only => [:create]
 
   def create
     address_id = Address.where(city: params[:city], taluka: params[:taluka], district: params[:district]).pluck(:id).first
@@ -28,15 +29,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-  end
-
-  def authenticate
-    user = User.where(is_verified: true, secrete_token: request.headers["secrete-token"], mobile_no: params[:mobile_no]).first
-    if user.present?
-      render json: {status: "success", code: 200, message: "Valid user"}
-    else
-      render json: {status: "error", code: 400,  message: "invalid user"}
-    end
   end
 
   # private

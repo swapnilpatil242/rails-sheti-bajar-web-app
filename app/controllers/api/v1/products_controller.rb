@@ -74,7 +74,7 @@ class  Api::V1::ProductsController < ApplicationController
 
   private
   def product_user
-    @user = User.where(is_verified: true, secrete_token: request.headers["secrete-token"]).first    
+    @user = User.where(secrete_token: request.headers["secrete-token"]).first
   end
   
   def product

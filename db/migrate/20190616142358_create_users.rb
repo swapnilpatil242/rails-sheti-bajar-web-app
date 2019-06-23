@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
       t.string :name
-      t.integer :mobile_no
+      t.string :mobile_no
       t.string :profile
       t.boolean :is_verified, default: false 
       t.boolean :is_deleted, default: false
