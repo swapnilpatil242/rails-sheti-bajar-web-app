@@ -9,10 +9,30 @@ Generators :
 
 
 # Record Creations through rails console(temporay data):
-  $ Category.create!(title: "grains", description: "grains testing", logo: "this is logo")
-  $ Address.create!(city: "bhk", taluka: "erandol", district: "jalgaon", state: "maha", pincode: 425109)
-  $ User.create!(name: "swapnil", mobile_no: 123456789, profile:"swapnil.png", is_verified: true, is_deleted: false, is_suspended: false, secrete_token: "xyz", address_id:1)
-  $ Product.create!(title: "Cotton", description: "text123", quantity: "1kg", is_verified: true, is_blocked: false, is_completed:false, address_id: 1, category_id: 1, user_id: 1)
+  $ Category.create!(title: "बियाणे औषधे व खते", description: "differnet type of seeds", logo: "this is logo")
+  $ Category.create!(title: "मशिण व शेती ची अवजारे", description: "diff type of machine used for farming", logo: "this is logo")
+  $ Category.create!(title: "पाळीव प्राणी", description: "differnet type of seeds", logo: "this is logo")
+  $ Category.create!(title: "पिके", description: "differnet type of seeds", logo: "this is logo")
+  $ Category.create!(title: "इतर", description: "differnet type of seeds", logo: "this is logo")
+  
+  $ Address.create!(city: "भातखेडे", taluka: "एरंडोल", district: "जळगाव", state: "महाराष्ट्रा", pincode: 425109)
+  $ Address.create!(city: "धुळपिंप्री", taluka: "पारोळा", district: "जळगाव", state: "महाराष्ट्रा", pincode: 425109)
+  $ Address.create!(city: "भरूच", taluka: "कराड", district: "सातारा", state: "महाराष्ट्रा", pincode: 425109)
+
+  $ User.create!(name: "स्वप्नील पाटील", mobile_no: "8208090566", profile:"swapnil.png", is_verified: true, is_deleted: false, is_suspended: false, secrete_token: "swap123xyz", address_id:1)
+  $ User.create!(name: "तुषार पाटील", mobile_no: "9011355859", profile:"tushar.png", is_verified: true, is_deleted: false, is_suspended: false, secrete_token: "tush123xyz", address_id: 2)
+  $ User.create!(name: "अतुल पाटील", mobile_no: "9011355860", profile:"atul.png", is_verified: true, is_deleted: false, is_suspended: false, secrete_token: "tush123xyz", address_id: 3)
+
+  $ Product.create!(title: "कापूस बी", description: "test", quantity: "1kg", is_verified: true, is_blocked: false, is_completed:false, address_id: 1, category_id: 1, user_id: 1)
+  $ Product.create!(title: "मका बी", description: "test", quantity: "1kg", is_verified: true, is_blocked: false, is_completed:false, address_id: 1, category_id: 1, user_id: 1)
+  
+  $ Product.create!(title: "कॉन्फीडर", description: "test", quantity: "1kg", is_verified: true, is_blocked: false, is_completed:false, address_id: 2, category_id: 3, user_id: 2)
+  $ Product.create!(title: "10 10 20 खते", description: "test", quantity: "1kg", is_verified: true, is_blocked: false, is_completed:false, address_id: 2, category_id: 3, user_id: 2)
+
+  $ Product.create!(title: "बैल जोडी", description: "test", quantity: "1kg", is_verified: true, is_blocked: false, is_completed:false, address_id: 3, category_id: 3, user_id: 3)
+
+  
+
   $ UploadedFile.create(imageable: Product.first, file_name: "test")
 
 

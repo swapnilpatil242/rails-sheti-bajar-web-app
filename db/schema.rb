@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_152937) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.integer "mobile_no"
+    t.string "mobile_no"
     t.string "profile"
     t.boolean "is_verified", default: false
     t.boolean "is_deleted", default: false
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_152937) do
     t.index ["is_suspended"], name: "index_users_on_is_suspended"
     t.index ["is_verified"], name: "index_users_on_is_verified"
     t.index ["mobile_no"], name: "index_users_on_mobile_no"
-    t.index ["secrete_token"], name: "index_users_on_secrete_token"
+    t.index ["secrete_token"], name: "index_users_on_secrete_token", unique: true
   end
 
   add_foreign_key "products", "addresses"
