@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2019_06_16_152937) do
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
     t.string "city"
     t.string "taluka"
     t.string "district"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_152937) do
     t.index ["taluka"], name: "index_addresses_on_taluka"
   end
 
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.string "logo"
@@ -34,7 +37,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_152937) do
     t.index ["title"], name: "index_categories_on_title"
   end
 
-  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.string "quantity"
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_152937) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "uploaded_files", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "uploaded_files", force: :cascade do |t|
     t.string "file_name"
     t.string "imageable_type"
     t.bigint "imageable_id"
@@ -65,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_06_16_152937) do
     t.index ["imageable_type", "imageable_id"], name: "index_uploaded_files_on_imageable_type_and_imageable_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "mobile_no"
     t.string "profile"
