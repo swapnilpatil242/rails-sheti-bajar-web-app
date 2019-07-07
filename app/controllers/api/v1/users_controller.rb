@@ -6,11 +6,14 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     address_id = Address.where(city: params[:city], taluka: params[:taluka], district: params[:district]).pluck(:id).first
+    unless address_id.present?
+      address_id = Address.create(city: params[:city], taluka: params[:taluka], district: params[:district]).pluck(:id).first
+    end
     user = User.new()
     user.name = params[:name]
     user.mobile_no = params[:mobile_no]
     user.is_verified = params[:is_verified]
-    user.address_id = address_id if address_id.present?
+    user.address_id = address_id
     if user.save
       render json: {status: "success", code: 200, data: user } and return  
     else
