@@ -16,6 +16,6 @@ class ApplicationController < ActionController::Base
 
   private
   def api_request?
-    request.format.json? || request.format.xml?
+    request.format.json?
   end
 end

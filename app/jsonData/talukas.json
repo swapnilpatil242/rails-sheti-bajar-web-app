@@ -1,0 +1,120 @@
+{
+	"1": [
+		{
+			"talukaCode": 0,
+			"talukaName": "सगळे तालुके"
+		},
+    {
+			"talukaCode": 1,
+			"talukaName": "अक्क्लकुवा"
+    },
+    {
+			"talukaCode": 2,
+			"talukaName": "अक्रणी"
+    },
+    {
+			"talukaCode": 3,
+			"talukaName": "तळोदे"
+    },
+    {
+			"talukaCode": 6,
+			"talukaName": "नवापुर"
+    },
+    {
+			"talukaCode": 5,
+			"talukaName": "नंदुरबार"
+    },
+    {
+			"talukaCode": 4,
+			"talukaName": "शहादा"
+    }
+	],
+	"2": [
+		{
+			"talukaCode": 0,
+			"talukaName": "सगळे तालुके"
+		},
+    {
+			"talukaCode": 4,
+			"talukaName": "धुळे"
+    },
+    {
+			"talukaCode": 1,
+			"talukaName": "शिरपुर"
+    },
+    {
+			"talukaCode": 2,
+			"talukaName": "शिंदखेडे"
+    },
+    {
+			"talukaCode": 3,
+			"talukaName": "साक्री"
+    }
+	],
+	"3": [
+		{
+			"talukaCode": 0,
+			"talukaName": "सगळे तालुके"
+		},
+		{
+			"talukaCode": 10,
+			"talukaName": "अमळनेर"
+		},
+		{
+			"talukaCode": 8,
+			"talukaName": "एरंडॊंल"
+		},
+		{
+			"talukaCode": 13,
+			"talukaName": "चाळीसगाव"
+		},
+		{
+			"talukaCode": 1,
+			"talukaName": "चोपडा"
+		},
+		{
+			"talukaCode": 7,
+			"talukaName": "जळगाव"
+		},
+		{
+			"talukaCode": 15,
+			"talukaName": "जामनेर"
+		},
+		{
+			"talukaCode": 9,
+			"talukaName": "धरणगाव"
+		},
+		{
+			"talukaCode": 14,
+			"talukaName": "पाचोरा"
+		},
+		{
+			"talukaCode": 11,
+			"talukaName": "पारोळा"
+		},
+		{
+			"talukaCode": 5,
+			"talukaName": "बोदवड"
+		},
+		{
+			"talukaCode": 12,
+			"talukaName": "भडगाव"
+		},
+		{
+			"talukaCode": 6,
+			"talukaName": "भुसावळ"
+		},
+		{
+			"talukaCode": 4,
+			"talukaName": "मुक्ताईनगर"
+		},
+		{
+			"talukaCode": 2,
+			"talukaName": "यावल"
+		},
+		{
+			"talukaCode": 3,
+			"talukaName": "रावेर"
+		}
+	]
+}
