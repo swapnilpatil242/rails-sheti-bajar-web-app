@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  village_id: 1
+  user_id: 1
+  lane_no: 1
+  lane_name: MyString
+  status: MyString
+
+two:
+  village_id: 1
+  user_id: 1
+  lane_no: 1
+  lane_name: MyString
+  status: MyString

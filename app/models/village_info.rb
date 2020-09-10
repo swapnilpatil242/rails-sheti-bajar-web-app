@@ -1,0 +1,2 @@
+class VillageInfo < ApplicationRecord
+end

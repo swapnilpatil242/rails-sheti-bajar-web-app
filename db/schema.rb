@@ -10,85 +10,85 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_16_152937) do
+ActiveRecord::Schema.define(version: 2020_09_10_124709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string "city"
-    t.string "taluka"
-    t.string "district"
+    t.string "village_id"
+    t.integer "taluka_id"
+    t.integer "district_id"
     t.string "state"
     t.integer "pincode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city"], name: "index_addresses_on_city"
-    t.index ["district"], name: "index_addresses_on_district"
-    t.index ["taluka"], name: "index_addresses_on_taluka"
+    t.index ["district_id"], name: "index_addresses_on_district_id"
+    t.index ["taluka_id"], name: "index_addresses_on_taluka_id"
+    t.index ["village_id"], name: "index_addresses_on_village_id"
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "title"
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
     t.text "description"
-    t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title"], name: "index_categories_on_title"
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "quantity"
-    t.boolean "is_verified", default: false
-    t.boolean "is_deleted", default: false
-    t.boolean "is_blocked", default: false
-    t.boolean "is_completed", default: false
-    t.bigint "address_id"
-    t.bigint "category_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_products_on_address_id"
-    t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["is_blocked"], name: "index_products_on_is_blocked"
-    t.index ["is_completed"], name: "index_products_on_is_completed"
-    t.index ["is_deleted"], name: "index_products_on_is_deleted"
-    t.index ["is_verified"], name: "index_products_on_is_verified"
-    t.index ["user_id"], name: "index_products_on_user_id"
-  end
-
-  create_table "uploaded_files", force: :cascade do |t|
-    t.string "file_name"
-    t.string "imageable_type"
-    t.bigint "imageable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["imageable_type", "imageable_id"], name: "index_uploaded_files_on_imageable_type_and_imageable_id"
+    t.index ["name"], name: "index_roles_on_name"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "mobile_no"
-    t.string "profile"
+    t.string "profile_pic"
     t.boolean "is_verified", default: false
     t.boolean "is_deleted", default: false
-    t.boolean "is_suspended", default: false
     t.string "secrete_token"
     t.bigint "address_id"
+    t.bigint "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["is_deleted"], name: "index_users_on_is_deleted"
-    t.index ["is_suspended"], name: "index_users_on_is_suspended"
     t.index ["is_verified"], name: "index_users_on_is_verified"
     t.index ["mobile_no"], name: "index_users_on_mobile_no"
+    t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["secrete_token"], name: "index_users_on_secrete_token", unique: true
   end
 
-  add_foreign_key "products", "addresses"
-  add_foreign_key "products", "categories"
-  add_foreign_key "products", "users"
+  create_table "village_infos", force: :cascade do |t|
+    t.integer "village_id"
+    t.text "description"
+    t.jsonb "other_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["village_id"], name: "index_village_infos_on_village_id"
+  end
+
+  create_table "village_notices", force: :cascade do |t|
+    t.integer "village_id"
+    t.integer "user_id"
+    t.string "status", comment: "active/delete"
+    t.string "title"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_village_notices_on_user_id"
+    t.index ["village_id"], name: "index_village_notices_on_village_id"
+  end
+
+  create_table "village_water_lines", force: :cascade do |t|
+    t.integer "village_id"
+    t.integer "user_id"
+    t.integer "lane_no"
+    t.string "lane_name"
+    t.string "status", comment: "active/previous/next"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lane_no"], name: "index_village_water_lines_on_lane_no"
+    t.index ["user_id"], name: "index_village_water_lines_on_user_id"
+    t.index ["village_id"], name: "index_village_water_lines_on_village_id"
+  end
+
   add_foreign_key "users", "addresses"
+  add_foreign_key "users", "roles"
 end

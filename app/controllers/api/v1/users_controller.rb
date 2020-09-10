@@ -5,16 +5,17 @@ class Api::V1::UsersController < ApplicationController
   skip_before_action :user_authenticate, :only => [:create]
 
   def create
-    address_id = Address.where(city: params[:city], taluka: params[:taluka], district: params[:district]).pluck(:id).first
-    unless address_id.present?
-      address_id = Address.create(city: params[:city], taluka: params[:taluka], district: params[:district]).pluck(:id).first
+    address = Address.where(village_id: params[:village_id], taluka_id: params[:taluka_id], district_id: params[:district_id]).first
+    unless address.present?
+      address = Address.create(village_id: params[:village_id], taluka_id: params[:taluka_id], district_id: params[:district_id])
     end
     user = User.new()
     user.name = params[:name]
     user.mobile_no = params[:mobile_no]
     user.is_verified = params[:is_verified]
-    user.address_id = address_id
-    if user.save
+    user.address_id = address.id
+    user.role_id = Role.find_by_name("नागरिक")['id']
+    if user.save!
       render json: {status: "success", code: 200, data: user } and return  
     else
       render json: {status: "error", code: 500, message: "Something went wrong." } and return

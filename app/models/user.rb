@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   belongs_to :address
-  has_many :products
+  belongs_to :role
 
   validates :mobile_no, uniqueness: true
   
